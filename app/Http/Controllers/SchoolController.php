@@ -20,9 +20,21 @@ class SchoolController extends Controller
     //Index
     public function index()
     {
+        //Component breadcrumb
+        $title = 'Listagem de Escolas';
+        $items = [
+            ['name' => ' Home', 'url' => route('school.index'), 'icon' => 'fa fa-home fa-lg'],
+            ['name' => ' Escolas', 'url' => route('school.index'), 'icon' => 'fa fa-university fa-lg'],
+            ['name' => ' Listagem', 'url' => route('school.index'), 'icon' => 'fa fa-list fa-lg'],
+        ];
+
+        //List all schools
         $schools = $this->schoolService->list();
 
+        //Return view
         return view('pages.school.index', [
+            'title' => $title,
+            'items' => $items,
             'schools' => $schools,
         ]);
     }
