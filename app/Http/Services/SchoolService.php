@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\School;
 
-class SchoolService
+class SchoolService extends BasicAbstractService
 {
 
     //Private vars
@@ -13,68 +13,70 @@ class SchoolService
     //Constructor
     public function __construct(School $repository)
     {
-        $this->repository = $repository;
+        // $this->repository = $repository;
+        parent::__construct($repository);
     }
 
     //Public methods
     //Store/Create
-    public function store($request)
-    {
-        $data = $request->all();
-        $this->repository->create($data);
+    // public function store($request)
+    // {
+    //     $data = $request->all();
+    //     $this->repository->create($data);
 
-        return (['success' => 'true', 'message' => 'School created successfully!']);
-    }
+    //     return (['success' => 'true', 'message' => 'School created successfully!']);
+    // }
 
-    //Read one data
-    public function show($id)
-    {
-        $data = $this->repository->find($id);
+    // //Read one data
+    // public function show($id)
+    // {
+    //     $data = $this->repository->find($id);
 
-        if (!$data) {
-            return (['success' => 'false', 'message' => 'School not found!']);
-        }
+    //     if (!$data) {
+    //         return (['success' => 'false', 'message' => 'School not found!']);
+    //     }
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
-    //Read all data
-    public function list()
-    {
-        $data = $this->repository->all();
+    // //Read all data
+    // public function list()
+    // {
+    //     $data = $this->repository->all();
 
-        if (!$data) {
-            return (['success' => 'false', 'message' => 'School not found!']);
-        }
+    //     if (!$data) {
+    //         return (['success' => 'false', 'message' => 'School not found!']);
+    //     }
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
-    //Update
-    public function update($request, $id)
-    {
-        $data = $this->repository->find($id);
+    // //Update
+    // public function update($request, $id)
+    // {
+    //     $data = $this->repository->find($id);
 
-        if (!$data) {
-            return (['success' => 'false', 'message' => 'School not found!']);
-        }
+    //     if (!$data) {
+    //         return (['success' => 'false', 'message' => 'School not found!']);
+    //     }
 
-        $data->update($request->all());
+    //     $update = $request->all();
+    //     $data->update($update);
 
-        return (['success' => 'true', 'message' => 'School updated successfully!']);
-    }
+    //     return (['success' => 'true', 'message' => 'School updated successfully!']);
+    // }
 
-    //Delete
-    public function delete($id)
-    {
-        $data = $this->repository->find($id);
+    // //Delete
+    // public function delete($id)
+    // {
+    //     $data = $this->repository->find($id);
 
-        if (!$data) {
-            return (['success' => 'false', 'message' => 'School not found!']);
-        }
+    //     if (!$data) {
+    //         return (['success' => 'false', 'message' => 'School not found!']);
+    //     }
 
-        $data->delete();
+    //     $data->delete();
 
-        return (['success' => 'true', 'message' => 'School deleted successfully!']);
-    }
+    //     return (['success' => 'true', 'message' => 'School deleted successfully!']);
+    // }
 }

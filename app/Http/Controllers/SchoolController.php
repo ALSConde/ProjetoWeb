@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SchoolRequest;
-use App\Http\Services\SchoolService;
-use App\Models\School;
-use Illuminate\Http\Request;
+use App\Http\Services\BasicServiceInterface;
 
 class SchoolController extends Controller
 {
@@ -13,17 +11,15 @@ class SchoolController extends Controller
     private $schoolService;
 
     //Constructor
-    public function __construct(SchoolService $schoolService)
+    public function __construct(BasicServiceInterface $schoolService)
     {
         $this->schoolService = $schoolService;
     }
-
 
     //Views
     //Index
     public function index()
     {
-
         $schools = $this->schoolService->list();
 
         return view('pages.school.index', [
@@ -42,20 +38,6 @@ class SchoolController extends Controller
     {
         $school = $this->schoolService->show($id);
         return view('pages.school.update', compact('school'));
-    }
-
-    //Read one data
-    public function show($id)
-    {
-        $school = $this->schoolService->show($id);
-        return view('school.show', compact('school'));
-    }
-
-    //Read all data
-    public function list()
-    {
-        $schools = $this->schoolService->list();
-        return view('school.list', compact('schools'));
     }
 
     //Delete data view
@@ -84,7 +66,7 @@ class SchoolController extends Controller
     }
 
     //Delete
-    public function destroy($id)
+    public function delete($id)
     {
         $data = $this->schoolService->delete($id);
         return redirect()->route('school.index')->with($data['success'], $data['message']);

@@ -25,5 +25,5 @@ Route::prefix('/school')->group(function (){
     Route::get('/exclude/{id}', [SchoolController::class, 'exclude'])->name('school.exclude');
     Route::post('/store', [SchoolController::class, 'store'])->name('school.store');
     Route::post('/update/{id}', [SchoolController::class, 'update'])->name('school.update');
-    Route::post('/delete/{id}', [SchoolController::class, 'destroy'])->name('school.delete');
+    Route::post('/delete/{id}', [SchoolController::class, 'delete'])->name('school.delete');
 });
