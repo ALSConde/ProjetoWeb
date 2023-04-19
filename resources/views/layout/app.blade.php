@@ -48,6 +48,8 @@
     <script src="{{ asset('lib/js/plugins/pace.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
+    @yield('javascript')
+
     @stack('scripts')
     <!-- Scripts adicionais // Cria uma pilha de scripts-->
 </body>

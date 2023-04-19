@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::prefix('/school')->group(function (){
     Route::get('/', [SchoolController::class, 'index'])->name('school.index');
+    Route::get('/show/{id}', [SchoolController::class, 'show'])->name('school.show');
     Route::get('/create', [SchoolController::class, 'create'])->name('school.create');
     Route::get('/edit/{id}', [SchoolController::class, 'edit'])->name('school.edit');
     Route::get('/exclude/{id}', [SchoolController::class, 'exclude'])->name('school.exclude');

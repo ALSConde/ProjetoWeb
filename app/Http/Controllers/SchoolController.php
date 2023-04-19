@@ -31,11 +31,21 @@ class SchoolController extends Controller
         //List all schools
         $schools = $this->schoolService->list();
 
+
+        //Component Modal
+        $modalOptions = [
+            'title' => 'Excluir Escola',
+            'action' => 'school.delete',
+            'content' => 'Tem certeza que deseja excluir a escola?',
+        ];
+
+
         //Return view
         return view('pages.school.index', [
             'title' => $title,
             'items' => $items,
             'schools' => $schools,
+            'modalOptions' => $modalOptions ?? null,
         ]);
     }
 
@@ -48,8 +58,18 @@ class SchoolController extends Controller
     //Edit/Update
     public function edit($id)
     {
+        //Component Modal
+        $modalOptions = [
+            'title' => 'Editar Escola',
+            'action' => 'school.update',
+            'content' => 'Tem certeza que deseja editar a escola?',
+        ];
+
         $school = $this->schoolService->show($id);
-        return view('pages.school.update', compact('school'));
+        return view('pages.school.update', [
+            'school' => $school,
+            'modalOptions' => $modalOptions,
+        ]);
     }
 
     //Delete data view
@@ -80,6 +100,7 @@ class SchoolController extends Controller
     //Delete
     public function delete($id)
     {
+        // dd($id);
         $data = $this->schoolService->delete($id);
         return redirect()->route('school.index')->with($data['success'], $data['message']);
     }

@@ -28,8 +28,12 @@
                                     <td>
                                         <a class="btn btn-info btn-sm" href="{{ url('/school/edit/' . $school->id) }}"><i
                                                 class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-danger btn-sm" href="{{ url('/school/exclude', $school->id) }}"><i
-                                                class="fa fa-trash"></i></a>
+                                        <button class="btn btn-danger btn-sm" id="showModal">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        <x-Modal :school="$school" :modalOptions="$modalOptions" :deleteRoute="true"></x-Modal>
+                                        {{-- <a class="btn btn-danger btn-sm" href="{{ url('/school/exclude', $school->id) }}"><i
+                                                class="fa fa-trash"></i></a> --}}
                                     </td>
                                 </tr>
                             @empty
@@ -47,6 +51,14 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-@endpush
+@section('javascript')
+    <script>
+        $('#showModal').on('click', function(event) {
+            event.preventDefault();
+            $('#myModal').modal('show');
+        });
+        $('#btnCancelar').on('click', function(event) {
+            window.location = "{{ route('school.index') }}";
+        });
+    </script>
+@endsection
