@@ -16,42 +16,78 @@
     <link href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 
-<body class="app sedebar-mini rtl">
+@guest
 
-    <!-- Header -->
-    <header>
-        @include('layout.components.header')
-    </header>
+    <body class="app sedebar-mini rtl">
 
-    <!-- Aside -->
-    <aside>
-        @include('layout.components.sidebar')
-    </aside>
+        <!-- Header -->
+        <header>
+            @include('layout.components.header')
+        </header>
 
-    <!-- Content -->
-    <main>
-        <div class="app-content">
-            @yield('content')
-        </div>
-    </main>
+        <!-- Aside -->
+        <aside>
+            @include('layout.components.sidebar')
+        </aside>
 
-    <!-- Footer -->
-    <footer>
-        @include('layout.components.footer')
-    </footer>
+        <!-- Content -->
+        <main>
+            <div class="app-content" style="margin-left: 0px">
+                @yield('content')
+            </div>
+        </main>
 
-    <!-- Scripts -->
-    <script src="{{ asset('lib/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('lib/js/popper.min.js') }}"></script>
-    <script src="{{ asset('lib/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('lib/js/main.js') }}"></script>
-    <script src="{{ asset('lib/js/plugins/pace.min.js') }}"></script>
-    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <!-- Footer -->
+        <footer>
+            @include('layout.components.footer')
+        </footer>
 
-    @yield('javascript')
+        <!-- Scripts -->
+        <script src="{{ asset('lib/js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('lib/js/popper.min.js') }}"></script>
+        <script src="{{ asset('lib/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('lib/js/main.js') }}"></script>
+        <script src="{{ asset('lib/js/plugins/pace.min.js') }}"></script>
+        <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-    @stack('scripts')
-    <!-- Scripts adicionais // Cria uma pilha de scripts-->
-</body>
+        @yield('javascript')
+    </body>
+@else
+
+    <body class="app sedebar-mini rtl">
+
+        <!-- Header -->
+        <header>
+            @include('layout.components.header')
+        </header>
+
+        <!-- Aside -->
+        <aside>
+            @include('layout.components.sidebar')
+        </aside>
+
+        <!-- Content -->
+        <main>
+            <div class="app-content">
+                @yield('content')
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            @include('layout.components.footer')
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ asset('lib/js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('lib/js/popper.min.js') }}"></script>
+        <script src="{{ asset('lib/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('lib/js/main.js') }}"></script>
+        <script src="{{ asset('lib/js/plugins/pace.min.js') }}"></script>
+        <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+        @yield('javascript')
+    </body>
+@endguest
 
 </html>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Services;
 
-abstract class BasicAbstractService implements BasicServiceInterface
+use Illuminate\Support\Facades\Hash;
+
+abstract class BasicAbstractService
 {
 
     //Private vars
@@ -17,9 +19,16 @@ abstract class BasicAbstractService implements BasicServiceInterface
     public function store($request)
     {
         $data = $request->all();
-        $this->repository->create($data);
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+        $data = $this->repository->create($data);
 
-        return (['success' => 'true', 'message' => 'Created successfully!']);
+        return ([
+            'success' => 'true',
+            'message' => 'Created successfully!',
+            'data' => $data,
+        ]);
     }
 
     public function show($id)

@@ -6,7 +6,7 @@
     <div class="container">
         <div class="container">
             <div class="tile">
-                <div class="tile.body">
+                <div class="tile-body">
                     <form action="{{ url('/school/update', $school->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @include('pages.school.__form')
@@ -17,7 +17,7 @@
                                         Salvar alteração
                                     </i>
                                 </button>
-                                <x-Modal :school="$school" :modalOptions="$modalOptions" :deleteRoute="false"></x-Modal>
+                                <x-Modal :data="$school" :modalOptions="$modalOptions"></x-Modal>
                                 <a id="cancelar" class="btn btn-secondary btn-lg" href="{{ url('/school') }}">
                                     <i class="fa fa-arrow-left">
                                         Cancelar alteração

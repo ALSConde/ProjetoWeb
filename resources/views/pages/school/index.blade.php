@@ -26,14 +26,12 @@
                                     <td>{{ $school->phone }}</td>
                                     <td>{{ $school->email }}</td>
                                     <td>
-                                        <a class="btn btn-info btn-sm" href="{{ url('/school/edit/' . $school->id) }}"><i
+                                        <a class="btn btn-info btn-sm" href="{{ route('school.edit', $school->id) }}"><i
                                                 class="fa fa-pencil"></i></a>
                                         <button class="btn btn-danger btn-sm" id="showModal">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                        <x-Modal :school="$school" :modalOptions="$modalOptions" :deleteRoute="true"></x-Modal>
-                                        {{-- <a class="btn btn-danger btn-sm" href="{{ url('/school/exclude', $school->id) }}"><i
-                                                class="fa fa-trash"></i></a> --}}
+                                        <x-Modal :data="$school" :modalOptions="$modalOptions"></x-Modal>
                                     </td>
                                 </tr>
                             @empty
@@ -43,7 +41,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <a class="btn btn-success" href="{{ url('/school/create') }}">
+                    <a class="btn btn-success" href="{{ route('school.create') }}">
                         <i class="fa fa-plus-circle">Adicionar</i>
                     </a>
                 </div>

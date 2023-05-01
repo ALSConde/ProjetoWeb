@@ -9,16 +9,16 @@ use Illuminate\View\Component;
 class Modal extends Component
 {
     //Vars of the component
-    public $school;
+    public $data;
     public $modalOptions;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($school, $modalOptions)
+    public function __construct($data, $modalOptions)
     {
         //
-        $this->school = $school;
+        $this->data = $data;
         $this->modalOptions = $modalOptions;
     }
 
@@ -27,6 +27,9 @@ class Modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.modal');
+        return view('components.modal', [
+            'data' => $this->data,
+            'modalOptions' => $this->modalOptions,
+        ]);
     }
 }

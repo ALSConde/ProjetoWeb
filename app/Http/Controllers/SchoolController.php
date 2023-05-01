@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SchoolRequest;
-use App\Http\Services\BasicServiceInterface;
+use App\Http\Services\SchoolServiceInterface;
 
 class SchoolController extends Controller
 {
@@ -11,7 +11,7 @@ class SchoolController extends Controller
     private $schoolService;
 
     //Constructor
-    public function __construct(BasicServiceInterface $schoolService)
+    public function __construct(SchoolServiceInterface $schoolService)
     {
         $this->schoolService = $schoolService;
     }
@@ -70,14 +70,6 @@ class SchoolController extends Controller
             'school' => $school,
             'modalOptions' => $modalOptions,
         ]);
-    }
-
-    //Delete data view
-    public function exclude($id)
-    {
-        $school = $this->schoolService->show($id);
-
-        return view('pages.school.exclude', compact('school'));
     }
 
     //Public methods (CRUD) calls to service

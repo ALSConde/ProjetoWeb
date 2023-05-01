@@ -2,7 +2,7 @@
 
 namespace App\Http\Services;
 
-interface BasicServiceInterface
+interface SchoolServiceInterface
 {
     public function store($request);
     public function show($id);

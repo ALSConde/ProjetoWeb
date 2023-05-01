@@ -6,8 +6,8 @@
     <div class="container">
         <div class="container">
             <div class="tile">
-                <div class="tile.body">
-                    <form action="{{ url('/school/store') }}" method="POST" enctype="multipart/form-data">
+                <div class="tile-body">
+                    <form action="{{ route('school.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @include('pages.school.__form')
                         <div class="row mt-5">
@@ -17,7 +17,7 @@
                                         Incluir nova Escola
                                     </i>
                                 </button>
-                                <a id="cancelar" class="btn btn-secondary btn-lg" href="{{ url('/school') }}">
+                                <a id="cancelar" class="btn btn-secondary btn-lg" href="{{ route('school.index') }}">
                                     <i class="fa fa-arrow-left">
                                         Cancelar cadastro
                                     </i>

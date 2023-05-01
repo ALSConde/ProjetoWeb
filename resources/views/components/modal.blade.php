@@ -8,7 +8,8 @@
                 </button>
             </div>
             <div class="modal-content">
-                <form action="{{ route($modalOptions['action'], $school->id) }}" method="POST"
+                
+                <form action="{{ route($modalOptions['action'], $data->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
