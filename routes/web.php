@@ -39,4 +39,4 @@ Route::prefix('/school')->group(function (){
     Route::post('/delete/{id}', [SchoolController::class, 'delete'])->name('school.delete');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);

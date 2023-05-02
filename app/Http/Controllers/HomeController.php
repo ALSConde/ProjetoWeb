@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user())
-            return redirect()->route('usuarios.index');
+            return redirect()->route('user.index');
         else {
             return view('home');
         }
